@@ -3,6 +3,6 @@ import { getUserRepos } from '../controllers/indexController';
 
 const router = express.Router();
 
-router.get('/api/:username', getUserRepos);
+router.get('/:username', getUserRepos);
 
 export default router;

@@ -44,11 +44,12 @@ interface UserReposResponse {
   languageStats: LanguageStat[];
 }
 
-
-export const getUserReposWithStats = async (username: string): Promise<UserReposResponse> => {
+export const getUserReposWithStats = async (
+  username: string
+): Promise<UserReposResponse> => {
   const repos = await getGithubReposWithLanguages(username);
   const languageStats = calculateLanguageStats(repos);
-  
+
   const transformedRepos = repos.map((repo) => ({
     id: repo.id,
     name: repo.name,
@@ -168,7 +169,8 @@ export const getGithubReposWithLanguages = async (
 };
 
 export const calculateLanguageStats = (repos: Repository[]) => {
-  const languageMap: Record<string, { bytes: number; color: string | null }> = {};
+  const languageMap: Record<string, { bytes: number; color: string | null }> =
+    {};
   let totalBytes = 0;
 
   repos.forEach((repo) => {
@@ -202,10 +204,7 @@ export const calculateLanguageStats = (repos: Repository[]) => {
   );
 
   if (otherLanguages.length > 0) {
-    const otherBytes = otherLanguages.reduce(
-      (sum, lang) => sum + lang.size,
-      0
-    );
+    const otherBytes = otherLanguages.reduce((sum, lang) => sum + lang.size, 0);
     const otherPercentage = otherLanguages.reduce(
       (sum, lang) => sum + lang.percentage,
       0
