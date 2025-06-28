@@ -25,6 +25,9 @@ This would be the result:
   <img src="https://gh-readme-language.vercel.app/api/WickyPlays" alt="Top Languages" />
 </p>
 
+> [!CAUTION]
+> Public API like the above has a disadvantage of being rate limited. Check [Build your own](#build-your-own) for more info.
+
 ## Contribution
 
 Due to its open source nature, anyone is allowed to make a pull request (PR) to further improve the project.
@@ -36,6 +39,14 @@ The project is powered by Vercel.
 3. Run the development mode: `npm run dev`
 4. After modify anywhere in the code that needs improved, submit a PR for me to review them.
 5. You're done!
+
+<a name="build-your-own" />
+## Build your own
+At any point if you are using public API provided by me, you'll possibily reach a rate limit error. This is because Github REST API only allows a total of 5000 calls/hour. Even though the API has its own rate limit protection, it's still not enough. We recommend you to build your own backend instance instead.
+
+Some info:
++ The project is running under node.js
++ Github API key is needed to run. Create `.env` file with `GITHUB_TOKEN` environment variable.
 
 ## Support me
 
