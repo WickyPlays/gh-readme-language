@@ -5,12 +5,17 @@ Welcome to Github Readme Language (aka GH-Readme-Language).
 This small project allows you to dynamically grab all languages that you have contributed on your or others' Github on README!
 
 > [!IMPORTANT]
-I am a solo developer for this application, therefore not everything could be covered for this project just yet given the time that I have for other stuffs. However, you can contribute to the project! Read Contribution section.
+I am a solo developer for this project, therefore not every features could be covered just yet given the time that I have for other stuffs. However, you can contribute to the project! Read Contribution section for info.
 
 ## How to use
 Simple. Simply add the following into your README.md and you're good to go!
 
-```![My stats](https://gh-readme-language.vercel.app/api/WickyPlays)```
+```
+![My stats](https://gh-readme-language.vercel.app/api/WickyPlays)
+```
+
+This would be the result:
+![My stats](https://gh-readme-language.vercel.app/api/WickyPlays)
 
 ## Contribution
 Due to its open source nature, anyone is allowed to make a pull request (PR) to further improve the project.
