@@ -9,7 +9,11 @@
     "build": "tsc"
   },
   "keywords": [],
-  "author": "",
+  "author": {
+    "name": "WickyPlays",
+    "email": "baottworkspace@gmail.com",
+    "url": "https://github.com/WickyPlays"
+  },
   "license": "ISC",
   "description": "",
   "dependencies": {

@@ -9,7 +9,7 @@ This small project allows you to dynamically grab all languages that you have co
 Originally this was only meant for my own portfolio README or website, but you guys can now experience it too!
 
 > [!IMPORTANT]
-> I am a solo developer for this project, therefore not every features could be covered just yet given the time that I have for other stuffs. However, you can contribute to the project! Read Contribution section for info.
+> I am a solo developer for this project, therefore not every features could be covered just yet given the time that I have for other stuffs. However, you can contribute to the project! Read [Contribution](#contribution) section for info.
 
 ## How to use
 
@@ -40,8 +40,8 @@ The project is powered by Vercel.
 4. After modify anywhere in the code that needs improved, submit a PR for me to review them.
 5. You're done!
 
-<a name="build-your-own" />
 ## Build your own
+
 At any point if you are using public API provided by me, you'll possibily reach a rate limit error. This is because Github REST API only allows a total of 5000 calls/hour. Even though the API has its own rate limit protection, it's still not enough. We recommend you to build your own backend instance instead.
 
 Some info:
