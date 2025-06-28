@@ -8,13 +8,14 @@ This small project allows you to dynamically grab all languages that you have co
 I am a solo developer for this project, therefore not every features could be covered just yet given the time that I have for other stuffs. However, you can contribute to the project! Read Contribution section for info.
 
 ## How to use
-Simple. Simply add the following into your README.md and you're good to go!
+Simple. Simply add the following into your README.md (replace username with your Github username) and you're good to go!
 
 ```
-![My stats](https://gh-readme-language.vercel.app/api/WickyPlays)
+![My stats](https://gh-readme-language.vercel.app/api/username)
 ```
 
 This would be the result:
+
 ![My stats](https://gh-readme-language.vercel.app/api/WickyPlays)
 
 ## Contribution
