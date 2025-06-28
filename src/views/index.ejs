@@ -1,0 +1,42 @@
+<svg width="350" height="<%= 120 + Math.ceil(data.languageStats.length / 2) * 20 %>" viewBox="0 0 350 <%= 120 + Math.ceil(data.languageStats.length / 2) * 20 %>" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .chart-title { font: bold 16px sans-serif; text-anchor: middle; }
+    .legend-item { font: 11px sans-serif; }
+    .percentage-label { font: 11px sans-serif; }
+  </style>
+
+  <rect width="100%" height="100%" fill="#f3f3f3" rx="8" ry="8" stroke="#ccc" stroke-width="1.5"/>
+  
+  <!-- Title centered at top -->
+  <text x="175" y="25" class="chart-title">Language Usage for <%= data.username %></text>
+  
+  <!-- Progress bar container -->
+  <rect x="25" y="45" width="300" height="25" fill="#f0f0f0" rx="4" ry="4"/>
+  
+  <!-- Progress bar segments -->
+  <%
+  let currentPosition = 25;
+  data.languageStats.forEach((stat) => {
+    const segmentWidth = (stat.percentage / 100) * 300;
+  %>
+    <rect x="<%= currentPosition %>" y="45" width="<%= segmentWidth %>" height="25" fill="<%= stat.color %>"/>
+  <%
+    currentPosition += segmentWidth;
+  }); 
+  %>
+  
+  <!-- Legend items in two centered columns -->
+  <g transform="translate(25, 85)">
+    <% 
+      const half = Math.ceil(data.languageStats.length / 2);
+      data.languageStats.forEach((stat, index) => { 
+        const col = index < half ? 0 : 1;
+        const row = col === 0 ? index : index - half;
+        const xOffset = col * 175; // space between columns
+    %>
+      <rect x="<%= xOffset %>" y="<%= row * 22 %>" width="12" height="12" fill="<%= stat.color %>" rx="2" ry="2"/>
+      <text x="<%= xOffset + 17 %>" y="<%= row * 22 + 11 %>" class="legend-item"><%= stat.name %></text>
+      <text x="<%= xOffset + 90 %>" y="<%= row * 22 + 11 %>" class="legend-item"><%= stat.percentage.toFixed(1) %>%</text>
+    <% }); %>
+  </g>
+</svg>

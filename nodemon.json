@@ -1,0 +1,6 @@
+{
+  "ext": "js,ts,css,ejs",
+  "ignore": ["*.test.js", "fixtures/*"],
+  "watch": ["src"],
+  "exec": "ts-node src/index.ts"
+}
