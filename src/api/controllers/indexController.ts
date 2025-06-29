@@ -4,7 +4,9 @@ import { getUserReposWithStats } from "../services/indexService";
 export const getUserRepos = async (req: Request, res: Response) => {
   try {
     const { username } = req.params;
-    const response = await getUserReposWithStats(username);
+
+    const allAffiliations = req.query?.allAffiliations === "true";
+    const response = await getUserReposWithStats(username, allAffiliations);
 
     res.set("Content-Type", "image/svg+xml");
     res.render("index", { data: response });

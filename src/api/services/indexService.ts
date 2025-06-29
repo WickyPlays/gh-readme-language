@@ -45,9 +45,13 @@ interface UserReposResponse {
 }
 
 export const getUserReposWithStats = async (
-  username: string
+  username: string,
+  includeAllAffiliations: boolean = false
 ): Promise<UserReposResponse> => {
-  const repos = await getGithubReposWithLanguages(username);
+  const repos = await getGithubReposWithLanguages(
+    username,
+    includeAllAffiliations
+  );
   const languageStats = calculateLanguageStats(repos);
 
   const transformedRepos = repos.map((repo) => ({
@@ -70,43 +74,51 @@ export const getUserReposWithStats = async (
 };
 
 export const getGithubReposWithLanguages = async (
-  username: string
+  username: string,
+  includeAllAffiliations: boolean = false
 ): Promise<Repository[]> => {
   const query = `
     query ($username: String!, $cursor: String) {
-      user(login: $username) {
-        repositories(
-          first: 100,
-          after: $cursor,
-          ownerAffiliations: OWNER,
-          orderBy: { field: UPDATED_AT, direction: DESC },
-          isFork: false
-        ) {
-          pageInfo {
-            hasNextPage
-            endCursor
-          }
-          nodes {
-            id
-            name
-            url
-            primaryLanguage {
+  user(login: $username) {
+    repositories(
+      first: 100,
+      after: $cursor,
+      ownerAffiliations: ${
+    includeAllAffiliations
+      ? "[OWNER, COLLABORATOR, ORGANIZATION_MEMBER]"
+      : "[OWNER]"
+  },
+      orderBy: { field: UPDATED_AT, direction: DESC },
+      isFork: false
+    ) {
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+      nodes {
+        id
+        name
+        url
+        owner {
+          login
+        }
+        primaryLanguage {
+          name
+          color
+        }
+        languages(first: 15, orderBy: {field: SIZE, direction: DESC}) {
+          edges {
+            size
+            node {
               name
               color
-            }
-            languages(first: 15, orderBy: {field: SIZE, direction: DESC}) {
-              edges {
-                size
-                node {
-                  name
-                  color
-                }
-              }
             }
           }
         }
       }
     }
+  }
+}
   `;
 
   let allRepos: Repository[] = [];

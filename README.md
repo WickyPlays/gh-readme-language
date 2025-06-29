@@ -25,6 +25,12 @@ This would be the result:
   <img src="https://gh-readme-language.vercel.app/api/WickyPlays" alt="Top Languages" />
 </p>
 
+Or maybe you want to grab from all projects that you are involved in.
+
+```
+![My stats](https://gh-readme-language.vercel.app/api/username?allAffiliations=true)
+```
+
 > [!CAUTION]
 > Public API like the above has a disadvantage of being rate limited. Check [Build your own](#build-your-own) for more info.
 

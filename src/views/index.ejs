@@ -1,4 +1,5 @@
-<svg width="350" height="<%= 120 + Math.ceil(data.languageStats.length / 2) * 20 %>" viewBox="0 0 350 <%= 120 + Math.ceil(data.languageStats.length / 2) * 20 %>" xmlns="http://www.w3.org/2000/svg">
+<svg width="350" height="<%= 120 + Math.ceil(data.languageStats.length / 2) * 18 %>" viewBox="0 0 350 <%= 120 + Math.ceil(data.languageStats.length / 2) * 18 %>" xmlns="http://www.w3.org/2000/svg">
+  <!-- Not too sure about this theme one... -->
   <style>
     @media (prefers-color-scheme: dark) {
       .background { fill: #222; stroke: #444; }
@@ -24,16 +25,13 @@
   <!-- Title centered at top -->
   <text x="175" y="30" class="chart-title">Language Usage for <%= data.username %></text>
   
-  <!-- Progress bar container -->
-  <rect x="25" y="45" width="300" height="25" class="progress-bg" rx="4" ry="4"/>
-  
   <!-- Progress bar segments -->
   <%
   let currentPosition = 25;
   data.languageStats.forEach((stat) => {
     const segmentWidth = (stat.percentage / 100) * 300;
   %>
-    <rect x="<%= currentPosition %>" y="45" width="<%= segmentWidth %>" height="25" fill="<%= stat.color %>"/>
+    <rect x="<%= currentPosition %>" y="50" width="<%= segmentWidth %>" height="15" fill="<%= stat.color %>"/>
   <%
     currentPosition += segmentWidth;
   }); 
@@ -48,9 +46,9 @@
         const row = col === 0 ? index : index - half;
         const xOffset = col * 175; // space between columns
     %>
-      <rect x="<%= xOffset %>" y="<%= row * 22 %>" width="12" height="12" fill="<%= stat.color %>" rx="2" ry="2"/>
-      <text x="<%= xOffset + 17 %>" y="<%= row * 22 + 11 %>" class="legend-item"><%= stat.name %></text>
-      <text x="<%= xOffset + 90 %>" y="<%= row * 22 + 11 %>" class="legend-item"><%= stat.percentage.toFixed(1) %>%</text>
+      <rect x="<%= xOffset %>" y="<%= row * 22 - 5 %>" width="12" height="12" fill="<%= stat.color %>" rx="2" ry="2"/>
+      <text x="<%= xOffset + 17 %>" y="<%= row * 22 + 5 %>" class="legend-item"><%= stat.name %></text>
+      <text x="<%= xOffset + 90 %>" y="<%= row * 22 + 5 %>" class="legend-item"><%= stat.percentage.toFixed(1) %>%</text>
     <% }); %>
   </g>
 </svg>
